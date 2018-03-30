@@ -23,4 +23,23 @@ defmodule PipeLogger do
     data
   end
 
+  @doc """
+  Pipe Logging.
+
+  ## Examples
+
+      iex> [1, 2, 3] |> PipeLogger.info("msg") |> Enum.map(&(&1))
+      [1, 2, 3] # LOGGING >> 11:13:32.253 [info] "msg"[1, 2, 3]
+
+  """
+  def info(data, msg \\ "", metadata \\ [])
+  def info(data, msg, metadata) when msg == "" do
+    Logger.info(inspect(data), metadata)
+    data
+  end
+  def info(data, msg, metadata) do
+    Logger.info(inspect(msg) <> inspect(data), metadata)
+    data
+  end
+
 end

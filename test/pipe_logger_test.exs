@@ -4,6 +4,9 @@ defmodule PipeLoggerTest do
 
   @test_data [1, "STRING", {1, 2}, %{1 => 2}, [1, 2]]
 
+  #
+  # debug
+  #
   test "debug with no argument" do
     assert @test_data |> PipeLogger.debug() |> Enum.map(&(&1)) == @test_data
   end
@@ -27,4 +30,33 @@ defmodule PipeLoggerTest do
   test "debug with binary msg and metadata" do
     assert @test_data |> PipeLogger.debug(123, label: 123) |> Enum.map(&(&1)) == @test_data
   end
+
+  #
+  # info
+  #
+  test "info with no argument" do
+    assert @test_data |> PipeLogger.info() |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "infow ith string msg" do
+    assert @test_data |> PipeLogger.info("msg") |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "info with binary msg" do
+    assert @test_data |> PipeLogger.info(123) |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "info with no msg and metadata" do
+    assert @test_data |> PipeLogger.info("", label: 123) |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "info with string msg and metadata" do
+    assert @test_data |> PipeLogger.info("hoge", label: 123) |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "info with binary msg and metadata" do
+    assert @test_data |> PipeLogger.info(123, label: 123) |> Enum.map(&(&1)) == @test_data
+  end
+
+
 end
