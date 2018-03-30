@@ -19,3 +19,11 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/pipe_logger](https://hexdocs.pm/pipe_logger).
 
+## Usage
+
+```elixir
+  [1, 2, 3]
+  |> PipeLogger.debug("logging message", label: 123)
+  |> Enum.map(&(&1))
+  
+```
