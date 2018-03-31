@@ -61,5 +61,24 @@ defmodule PipeLogger do
     data
   end
 
+  @doc """
+  Pipe Logging.
+
+  ## Examples
+
+      iex> [1, 2, 3] |> PipeLogger.warn("msg") |> Enum.map(&(&1))
+      [1, 2, 3] # LOGGING >> 11:13:32.253 [warn] "msg"[1, 2, 3]
+
+  """
+  def warn(data, msg \\ "", metadata \\ [])
+  def warn(data, msg, metadata) when msg == "" do
+    Logger.warn(inspect(data), metadata)
+    data
+  end
+  def warn(data, msg, metadata) do
+    Logger.warn(inspect(msg) <> inspect(data), metadata)
+    data
+  end
+
 
 end

@@ -65,7 +65,7 @@ defmodule PipeLoggerTest do
     assert @test_data |> PipeLogger.error() |> Enum.map(&(&1)) == @test_data
   end
 
-  test "errorw ith string msg" do
+  test "error ith string msg" do
     assert @test_data |> PipeLogger.error("msg") |> Enum.map(&(&1)) == @test_data
   end
 
@@ -85,5 +85,31 @@ defmodule PipeLoggerTest do
     assert @test_data |> PipeLogger.error(123, label: 123) |> Enum.map(&(&1)) == @test_data
   end
 
+  #
+  # warn
+  #
+  test "warn with no argument" do
+    assert @test_data |> PipeLogger.warn() |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "warnw ith string msg" do
+    assert @test_data |> PipeLogger.warn("msg") |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "warn with binary msg" do
+    assert @test_data |> PipeLogger.warn(123) |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "warn with no msg and metadata" do
+    assert @test_data |> PipeLogger.warn("", label: 123) |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "warn with string msg and metadata" do
+    assert @test_data |> PipeLogger.warn("hoge", label: 123) |> Enum.map(&(&1)) == @test_data
+  end
+
+  test "warn with binary msg and metadata" do
+    assert @test_data |> PipeLogger.warn(123, label: 123) |> Enum.map(&(&1)) == @test_data
+  end
 
 end
