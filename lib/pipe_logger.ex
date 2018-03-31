@@ -1,5 +1,6 @@
 defmodule PipeLogger do
   require Logger
+
   @moduledoc """
   Documentation for PipeLogger.
   """
@@ -14,10 +15,12 @@ defmodule PipeLogger do
 
   """
   def debug(data, msg \\ "", metadata \\ [])
+
   def debug(data, msg, metadata) when msg == "" do
     Logger.debug(inspect(data), metadata)
     data
   end
+
   def debug(data, msg, metadata) do
     Logger.debug(inspect(msg) <> inspect(data), metadata)
     data
@@ -33,16 +36,18 @@ defmodule PipeLogger do
 
   """
   def info(data, msg \\ "", metadata \\ [])
+
   def info(data, msg, metadata) when msg == "" do
     Logger.info(inspect(data), metadata)
     data
   end
+
   def info(data, msg, metadata) do
     Logger.info(inspect(msg) <> inspect(data), metadata)
     data
   end
 
-    @doc """
+  @doc """
   Pipe Logging.
 
   ## Examples
@@ -52,10 +57,12 @@ defmodule PipeLogger do
 
   """
   def error(data, msg \\ "", metadata \\ [])
+
   def error(data, msg, metadata) when msg == "" do
     Logger.error(inspect(data), metadata)
     data
   end
+
   def error(data, msg, metadata) do
     Logger.error(inspect(msg) <> inspect(data), metadata)
     data
@@ -71,14 +78,14 @@ defmodule PipeLogger do
 
   """
   def warn(data, msg \\ "", metadata \\ [])
+
   def warn(data, msg, metadata) when msg == "" do
     Logger.warn(inspect(data), metadata)
     data
   end
+
   def warn(data, msg, metadata) do
     Logger.warn(inspect(msg) <> inspect(data), metadata)
     data
   end
-
-
 end
