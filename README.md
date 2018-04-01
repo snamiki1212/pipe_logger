@@ -1,6 +1,6 @@
 # PipeLogger
 
-**TODO: Add description**
+Pipelogger can output log not to stop pipe line.
 
 ## Installation
 
@@ -22,6 +22,8 @@ be found at [https://hexdocs.pm/pipe_logger](https://hexdocs.pm/pipe_logger).
 ## Usage
 
 ```elixir
+  require PipeLogger
+  
   [1, 2, 3]
   |> PipeLogger.debug("logging message", label: 123)
   |> Enum.map(&(&1))
